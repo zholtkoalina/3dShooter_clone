@@ -15,7 +15,6 @@ namespace AutomationTests.TestFramework
         public IEnumerator SpawnPlayer_DefaultCoreHUD()
         {
             const string playerElement = "Player0";
-            const string playerMeshPath = " Armature_Shooter / Armature_Mesh ";
             const string playerMeshName = "Armature_Mesh";
             const string healthBarElement = "player-health-bar";
             const string staminaBarElement = "player-stamina-bar";
@@ -25,9 +24,11 @@ namespace AutomationTests.TestFramework
             yield return TestExtensions.WaitForGameObject(playerElement, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
-            GameObject playerMeshObject = null;
-            yield return TestExtensions.WaitForGameObject(playerMeshPath, result => playerObject = result);
-            Assert.That(playerMeshObject.GetComponent<SkinnedMeshRenderer>().sharedMesh.name, Is.EqualTo(playerMeshName));
+            SkinnedMeshRenderer playerMeshRenderer = null;
+            yield return new WaitUntil(() =>
+                playerMeshRenderer = playerObject.GetComponentInChildren<SkinnedMeshRenderer>(true));
+            
+            Assert.That(playerMeshRenderer.sharedMesh.name, Is.EqualTo(playerMeshName));
             
             // Check bars are full
             var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
