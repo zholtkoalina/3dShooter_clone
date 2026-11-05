@@ -9,59 +9,76 @@ using UnityEngine.UIElements;
 namespace AutomationTests.TestFramework
 {
     [TestFixture]
-    public class SpawnTests
+    public class SpawnTests : BaseUITests
     {
-        [UnitySetUp]
-        public IEnumerator SetUp()
-        {
-            const string testSceneName = "[BB] Shooter";
-            const string hostButtonName = "host-button";
-            const string netManagerPanelName = "NetworkManager";
-        
-            // Scene
-            SceneManager.LoadScene(testSceneName);
-            yield return new WaitUntil(() => SceneManager.GetActiveScene().name ==  testSceneName);
-        
-            // Network panel
-            GameObject networkManagerPanel = null;
-            yield return TestExtensions.WaitForGameObject(netManagerPanelName, result => networkManagerPanel = result);
-
-            // Host button
-            var uiDocumentComponent = networkManagerPanel.GetComponent<UIDocument>();
-            var hostButton = uiDocumentComponent.rootVisualElement.Q<Button>(hostButtonName);
-            yield return hostButton.ClickButton();
-        }
-
         [UnityTest]
-        public IEnumerator SpawnPlayer_DefaultState()
+        public IEnumerator SpawnPlayer_DefaultCoreHUD()
         {
-            const string playerName = "Player0";
-            const string playerHealthBarName = "player-health-bar";
-            const string playerAmmoBarName = "player-ammo-bar";
+            const string playerElement = "Player0";
+            const string playerMeshPath = " Armature_Shooter / Armature_Mesh ";
+            const string playerMeshName = "Armature_Mesh";
+            const string healthBarElement = "player-health-bar";
+            const string staminaBarElement = "player-stamina-bar";
             
+            // Player
             GameObject playerObject = null;
-            yield return TestExtensions.WaitForGameObject(playerName, result => playerObject = result);
+            yield return TestExtensions.WaitForGameObject(playerElement, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
+            GameObject playerMeshObject = null;
+            yield return TestExtensions.WaitForGameObject(playerMeshPath, result => playerObject = result);
+            Assert.That(playerMeshObject.GetComponent<SkinnedMeshRenderer>().sharedMesh.name, Is.EqualTo(playerMeshName));
+            
+            // Check bars are full
+            var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
+
+            ProgressBar healthBar = null;
+            ProgressBar staminaBar = null;
+            yield return new WaitUntil(() =>
+            {
+                healthBar = uiComponent.Q<ProgressBar>(healthBarElement);
+                staminaBar = uiComponent.Q<ProgressBar>(staminaBarElement);
+                return healthBar != null && staminaBar != null;
+            });
+            
+            Assert.That(healthBar.value, Is.EqualTo(healthBar.highValue));
+            Assert.That(staminaBar.value, Is.EqualTo(staminaBar.highValue));
+        }
+        
+        [UnityTest]
+        public IEnumerator SpawnPlayer_DefaultWeaponHUD()
+        {
+            const string playerElement = "Player0";
+            const string weaponNameElement = "weapon-type-label";
+            const string weaponIconElement = "weapon-icon";
+            const string ammoBarElement = "player-ammo-bar";
+            
+            // Player
+            GameObject playerObject = null;
+            yield return TestExtensions.WaitForGameObject(playerElement, result => playerObject = result);
+            Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
+
+            // Weapon
             var weaponController = playerObject.GetComponent<WeaponController>();
             yield return new WaitUntil(() => weaponController.CurrentWeapon != null);
             weaponController.CurrentWeapon.GetAmmoInfo(out _, out var maxBullets);
 
-            var uiDocumentRoot = playerObject.GetComponent<UIDocument>().rootVisualElement;
+            // Check 
+            var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
 
-            ProgressBar healthBar = null;
+            Label weaponName = null;
+            Image weaponIcon = null;
             ProgressBar ammoBar = null;
             yield return new WaitUntil(() =>
             {
-                healthBar = uiDocumentRoot.Q<ProgressBar>(playerHealthBarName);
-                ammoBar = uiDocumentRoot.Q<ProgressBar>(playerAmmoBarName);
-                return healthBar != null && ammoBar != null;
+                weaponName = uiComponent.Q<Label>(weaponNameElement);
+                weaponIcon = uiComponent.Q<Image>(weaponIconElement);
+                ammoBar = uiComponent.Q<ProgressBar>(ammoBarElement);
+                return weaponName != null && weaponIcon != null && ammoBar != null;
             });
-
-            // Check health is full.
-            Assert.That(healthBar.value, Is.EqualTo(healthBar.highValue));
-
-            // Check the ammo HUD matches the weapon's current clip and capacity.
+            
+            Assert.That(weaponName.text, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponName));
+            Assert.That(weaponIcon.image, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponIcon));
             Assert.That(ammoBar.value, Is.EqualTo(maxBullets));
             Assert.That(ammoBar.value, Is.EqualTo(ammoBar.highValue));
         }
