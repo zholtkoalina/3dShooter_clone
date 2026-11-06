@@ -79,7 +79,7 @@ namespace AutomationTests.TestFramework
             });
             
             Assert.That(weaponName.text, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponName));
-            Assert.That(weaponIcon.image, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponIcon));
+            Assert.That(weaponIcon.sprite, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponIcon));
             Assert.That(ammoBar.value, Is.EqualTo(maxBullets));
             Assert.That(ammoBar.value, Is.EqualTo(ammoBar.highValue));
         }

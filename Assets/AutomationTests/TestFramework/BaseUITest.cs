@@ -10,7 +10,7 @@ namespace AutomationTests.TestFramework
 {
     public class BaseUITests
     {
-        [UnitySetUp]
+        [UnityOneTimeSetUp]
         public IEnumerator SetUp()
         {
             const string testSceneName = "[BB] Shooter";
