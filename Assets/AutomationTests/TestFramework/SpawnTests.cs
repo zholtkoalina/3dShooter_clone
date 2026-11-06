@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Linq;
 using Blocks.Gameplay.Shooter;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 
@@ -14,21 +14,16 @@ namespace AutomationTests.TestFramework
         [UnityTest]
         public IEnumerator SpawnPlayer_DefaultCoreHUD()
         {
-            const string playerElement = "Player0";
-            const string playerMeshName = "Armature_Mesh";
-            const string healthBarElement = "player-health-bar";
-            const string staminaBarElement = "player-stamina-bar";
-            
             // Player
             GameObject playerObject = null;
-            yield return TestExtensions.WaitForGameObject(playerElement, result => playerObject = result);
+            yield return TestExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
             SkinnedMeshRenderer playerMeshRenderer = null;
             yield return new WaitUntil(() =>
                 playerMeshRenderer = playerObject.GetComponentInChildren<SkinnedMeshRenderer>(true));
             
-            Assert.That(playerMeshRenderer.sharedMesh.name, Is.EqualTo(playerMeshName));
+            Assert.That(playerMeshRenderer.sharedMesh.name, Is.EqualTo(TestData.PlayerMeshName));
             
             // Check bars are full
             var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
@@ -37,8 +32,8 @@ namespace AutomationTests.TestFramework
             ProgressBar staminaBar = null;
             yield return new WaitUntil(() =>
             {
-                healthBar = uiComponent.Q<ProgressBar>(healthBarElement);
-                staminaBar = uiComponent.Q<ProgressBar>(staminaBarElement);
+                healthBar = uiComponent.Q<ProgressBar>(TestData.UIElements.HealthBar);
+                staminaBar = uiComponent.Q<ProgressBar>(TestData.UIElements.StaminaBar);
                 return healthBar != null && staminaBar != null;
             });
             
@@ -49,14 +44,9 @@ namespace AutomationTests.TestFramework
         [UnityTest]
         public IEnumerator SpawnPlayer_DefaultWeaponHUD()
         {
-            const string playerElement = "Player0";
-            const string weaponNameElement = "weapon-type-label";
-            const string weaponIconElement = "weapon-icon";
-            const string ammoBarElement = "player-ammo-bar";
-            
             // Player
             GameObject playerObject = null;
-            yield return TestExtensions.WaitForGameObject(playerElement, result => playerObject = result);
+            yield return TestExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
             // Weapon
@@ -72,9 +62,9 @@ namespace AutomationTests.TestFramework
             ProgressBar ammoBar = null;
             yield return new WaitUntil(() =>
             {
-                weaponName = uiComponent.Q<Label>(weaponNameElement);
-                weaponIcon = uiComponent.Q<Image>(weaponIconElement);
-                ammoBar = uiComponent.Q<ProgressBar>(ammoBarElement);
+                weaponName = uiComponent.Q<Label>(TestData.UIElements.Name);
+                weaponIcon = uiComponent.Q<Image>(TestData.UIElements.Icon);
+                ammoBar = uiComponent.Q<ProgressBar>(TestData.UIElements.AmmoBar);
                 return weaponName != null && weaponIcon != null && ammoBar != null;
             });
             
@@ -82,6 +72,28 @@ namespace AutomationTests.TestFramework
             Assert.That(weaponIcon.sprite, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponIcon));
             Assert.That(ammoBar.value, Is.EqualTo(maxBullets));
             Assert.That(ammoBar.value, Is.EqualTo(ammoBar.highValue));
+        }
+
+        [UnityTest]
+        public IEnumerator SpawnPlayer_SpawnPoint()
+        {
+            const string spawnPath = "MasterEnvironment_FPS/Pfb_SpawnPad";
+
+            
+            // Player
+            GameObject playerObject = null;
+            yield return TestExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
+            
+            var userPosition = playerObject.transform.position;
+            var spawnPoints = GameObject.Find(spawnPath);
+
+            Assert.That(spawnPoints, Is.Not.Null, $"No spawn point found at {spawnPath}");
+
+            var spawnObjectArray = GameObject.FindObjectsOfType<Transform>().Where(t => t.name == "Pfb_SpawnPad")
+                .ToArray();
+
+            Assert.That(spawnObjectArray.First(x => Vector3.Distance(x.position, userPosition) < 0.01f), Is.True);
         }
     }
 }
