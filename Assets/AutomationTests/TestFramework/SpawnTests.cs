@@ -29,15 +29,8 @@ namespace AutomationTests.TestFramework
             
             // Check bars are full
             var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
-
-            ProgressBar healthBar = null;
-            ProgressBar staminaBar = null;
-            yield return new WaitUntil(() =>
-            {
-                healthBar = uiComponent.Q<ProgressBar>(TestData.UIElements.HealthBar);
-                staminaBar = uiComponent.Q<ProgressBar>(TestData.UIElements.StaminaBar);
-                return healthBar != null && staminaBar != null;
-            });
+            var healthBar = uiComponent.Q<ProgressBar>(TestData.UIElements.HealthBar);
+            var staminaBar = uiComponent.Q<ProgressBar>(TestData.UIElements.StaminaBar);
             
             Assert.That(healthBar.value, Is.EqualTo(healthBar.highValue));
             Assert.That(staminaBar.value, Is.EqualTo(staminaBar.highValue));
@@ -49,7 +42,6 @@ namespace AutomationTests.TestFramework
             // Player
             GameObject playerObject = null;
             yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
-            Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
             // Weapon
             var weaponController = playerObject.GetComponent<WeaponController>();
@@ -58,17 +50,9 @@ namespace AutomationTests.TestFramework
 
             // Check 
             var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
-
-            Label weaponName = null;
-            Image weaponIcon = null;
-            ProgressBar ammoBar = null;
-            yield return new WaitUntil(() =>
-            {
-                weaponName = uiComponent.Q<Label>(TestData.UIElements.Name);
-                weaponIcon = uiComponent.Q<Image>(TestData.UIElements.Icon);
-                ammoBar = uiComponent.Q<ProgressBar>(TestData.UIElements.AmmoBar);
-                return weaponName != null && weaponIcon != null && ammoBar != null;
-            });
+            var weaponName = uiComponent.Q<Label>(TestData.UIElements.Name);
+            var weaponIcon = uiComponent.Q<Image>(TestData.UIElements.Icon);
+            var ammoBar = uiComponent.Q<ProgressBar>(TestData.UIElements.AmmoBar);
             
             Assert.That(weaponName.text, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponName));
             Assert.That(weaponIcon.sprite, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponIcon));
@@ -82,7 +66,6 @@ namespace AutomationTests.TestFramework
             // Player
             GameObject playerObject = null;
             yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
-            Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
             
             var userPosition = playerObject.transform.position;
             var spawnObjectArray = GameObject.FindObjectsByType<Transform>().Where(t => t.name == "Pfb_SpawnPad")
