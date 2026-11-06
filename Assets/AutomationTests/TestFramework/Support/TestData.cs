@@ -1,9 +1,10 @@
-namespace AutomationTests.TestFramework
+namespace AutomationTests.TestFramework.Support
 {
     internal static class TestData
     {
         public const string PlayerObjectName = "Player0";
         public const string PlayerMeshName = "Armature_Mesh";
+        public const string SpawnPadObjectName = "Pfb_SpawnPad";
         
         internal static class UIElements
         {

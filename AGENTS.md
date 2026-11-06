@@ -2,6 +2,8 @@
 
 Do not access, read, write, or execute anything outside `C:\work\3dShooter` unless you first ask the user and receive permission. This includes browsing the web, network access, and using files or tools outside the project folder.
 
+The user has granted standing permission to read the Unity test result file at `C:\Users\Alyna\AppData\LocalLow\DefaultCompany\3dShooter\TestResults.xml`. This permission applies only to reading that file.
+
 If completing a task requires access outside the project folder, ask the user for permission and identify the specific path and action needed. Do not treat this rule as a reason to stop without asking when outside access is necessary.
 
 You are allowed and encouraged to ask the user clarifying questions to make tasks more complete, or whenever you are unsure how to proceed or are stuck.

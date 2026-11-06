@@ -1,12 +1,10 @@
 using System.Collections;
-using Blocks.Gameplay.Shooter;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 
-namespace AutomationTests.TestFramework
+namespace AutomationTests.TestFramework.Shared
 {
     public class BaseUITests
     {
@@ -23,7 +21,7 @@ namespace AutomationTests.TestFramework
         
             // Network panel
             GameObject networkManagerPanel = null;
-            yield return TestExtensions.WaitForGameObject(netManagerPanelName, result => networkManagerPanel = result);
+            yield return GameObjectExtensions.WaitForGameObject(netManagerPanelName, result => networkManagerPanel = result);
 
             // Host button
             var uiComponent = networkManagerPanel.GetComponent<UIDocument>();

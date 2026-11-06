@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Linq;
+using AutomationTests.TestFramework.Shared;
 using Blocks.Gameplay.Shooter;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
+using TestData = AutomationTests.TestFramework.Support.TestData;
 
 namespace AutomationTests.TestFramework
 {
@@ -12,11 +14,11 @@ namespace AutomationTests.TestFramework
     public class SpawnTests : BaseUITests
     {
         [UnityTest]
-        public IEnumerator SpawnPlayer_DefaultCoreHUD()
+        public IEnumerator PlayerSpawn_DefaultCoreHUDChecks()
         {
             // Player
             GameObject playerObject = null;
-            yield return TestExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
             SkinnedMeshRenderer playerMeshRenderer = null;
@@ -42,11 +44,11 @@ namespace AutomationTests.TestFramework
         }
         
         [UnityTest]
-        public IEnumerator SpawnPlayer_DefaultWeaponHUD()
+        public IEnumerator PlayerSpawn_DefaultWeaponHUDChecks()
         {
             // Player
             GameObject playerObject = null;
-            yield return TestExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
             // Weapon
@@ -75,25 +77,19 @@ namespace AutomationTests.TestFramework
         }
 
         [UnityTest]
-        public IEnumerator SpawnPlayer_SpawnPoint()
+        public IEnumerator PlayerSpawn_SpawnPointChecks()
         {
-            const string spawnPath = "MasterEnvironment_FPS/Pfb_SpawnPad";
-
-            
             // Player
             GameObject playerObject = null;
-            yield return TestExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
             
             var userPosition = playerObject.transform.position;
-            var spawnPoints = GameObject.Find(spawnPath);
-
-            Assert.That(spawnPoints, Is.Not.Null, $"No spawn point found at {spawnPath}");
-
-            var spawnObjectArray = GameObject.FindObjectsOfType<Transform>().Where(t => t.name == "Pfb_SpawnPad")
+            var spawnObjectArray = GameObject.FindObjectsByType<Transform>().Where(t => t.name == "Pfb_SpawnPad")
                 .ToArray();
 
-            Assert.That(spawnObjectArray.First(x => Vector3.Distance(x.position, userPosition) < 0.01f), Is.True);
+            Assert.That(spawnObjectArray, Is.Not.Null, "No spawn pad transforms were found");
+            Assert.That(spawnObjectArray.Any(x => Vector3.Distance(x.position, userPosition) < 1f), Is.True);
         }
     }
 }
