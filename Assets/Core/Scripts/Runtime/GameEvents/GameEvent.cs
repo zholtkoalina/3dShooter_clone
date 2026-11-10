@@ -20,6 +20,9 @@ namespace Blocks.Gameplay.Core
         /// </summary>
         private readonly List<System.Action> m_Listeners = new List<System.Action>();
 
+        /// <summary>Gets the number of times this event has been raised</summary>
+        public int RaiseCount { get; private set; }
+
         #endregion
 
         #region Public Methods
@@ -32,6 +35,7 @@ namespace Blocks.Gameplay.Core
         /// </summary>
         public void Raise()
         {
+            RaiseCount++;
             for (int i = m_Listeners.Count - 1; i >= 0; i--)
             {
                 m_Listeners[i].Invoke();

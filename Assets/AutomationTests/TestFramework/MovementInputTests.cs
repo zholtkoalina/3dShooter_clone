@@ -60,6 +60,12 @@ namespace AutomationTests.TestFramework
             var jumpAbility = playerObject.GetComponent<JumpAbility>();
             var staminaBar = basicUI.Hud.StaminaBar;
             
+            // Events
+            var onJumpPressedEvent = Resources.FindObjectsOfTypeAll<GameEvent>().FirstOrDefault(gameEvent => gameEvent.name == "OnJumpPressed");
+            var onJumpReleasedEvent = Resources.FindObjectsOfTypeAll<GameEvent>().FirstOrDefault(gameEvent => gameEvent.name == "OnJumpReleased");
+            var jumpPressedCount = onJumpPressedEvent.RaiseCount;
+            var jumpReleasedCount = onJumpReleasedEvent.RaiseCount;
+            
             // Cooldown before first Jump can be made
             yield return TestExtensions.WaitUntil(() => movement.TimeSinceLanded >= jumpAbility.LandingCooldown);
             
@@ -70,16 +76,17 @@ namespace AutomationTests.TestFramework
             // Press jump button
             yield return KeyboardExtensions.PressKey(Key.Space);
             yield return TestExtensions.WaitUntil(() => !movement.IsGrounded);
+            Assert.That(onJumpPressedEvent.RaiseCount, Is.GreaterThan(jumpPressedCount), "Event should be raised when Space is pressed");
             Assert.That(playerObject.transform.position.y, Is.GreaterThan(groundY), "Player should be above the ground during Jump");
             Assert.That(staminaBar.value, Is.LessThan(staminaBar.highValue));
 
             // Release jump button
             yield return KeyboardExtensions.ReleaseKey(Key.Space);
             yield return TestExtensions.WaitUntil(() => movement.IsGrounded);
+            Assert.That(onJumpReleasedEvent.RaiseCount, Is.GreaterThan(jumpReleasedCount), "Event should be raised when Space is released");
             Assert.That(playerObject.transform.position.y, Is.EqualTo(groundY).Within(deltaDistance), "Player should be grounded after Jump");
             Assert.That(staminaBar.value, Is.LessThan(staminaBar.highValue), "Stamina still isn't recovered right after Jump");
         }
-        
 
         [UnityTearDown]
         public IEnumerator TearDown()
