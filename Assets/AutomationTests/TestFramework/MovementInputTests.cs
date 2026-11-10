@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using AutomationTests.TestFramework.Shared;
 using AutomationTests.TestFramework.Support;
 using Blocks.Gameplay.Core;
@@ -27,7 +26,7 @@ namespace AutomationTests.TestFramework
             // Parameters
             var playerObject = GameObject.Find(BasicUI.PlayerObjectName);
             var movement = playerObject.GetComponent<CoreMovement>();
-            var onMoveInputEvent = Resources.FindObjectsOfTypeAll<Vector2Event>().FirstOrDefault(gameEvent => gameEvent.name == "OnMoveInput");
+            var onMoveInputEvent = Components.GetEvent<Vector2Event>(Components.OnMoveEventName);
             var startPosition = playerObject.transform.position;
             
             // Press walk button
@@ -61,8 +60,8 @@ namespace AutomationTests.TestFramework
             var staminaBar = basicUI.Hud.StaminaBar;
             
             // Events
-            var onJumpPressedEvent = Resources.FindObjectsOfTypeAll<GameEvent>().FirstOrDefault(gameEvent => gameEvent.name == "OnJumpPressed");
-            var onJumpReleasedEvent = Resources.FindObjectsOfTypeAll<GameEvent>().FirstOrDefault(gameEvent => gameEvent.name == "OnJumpReleased");
+            var onJumpPressedEvent = Components.GetEvent<GameEvent>(Components.OnJumpPressEventName);
+            var onJumpReleasedEvent = Components.GetEvent<GameEvent>(Components.OnJumpReleasEventName);
             var jumpPressedCount = onJumpPressedEvent.RaiseCount;
             var jumpReleasedCount = onJumpReleasedEvent.RaiseCount;
             

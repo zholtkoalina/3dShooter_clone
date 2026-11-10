@@ -11,7 +11,6 @@ namespace AutomationTests.TestFramework.Support
         public const string PlayerObjectName = "Player0";
         public const string PlayerMeshName = "Armature_Mesh";
         public const string SpawnPadName = "Pfb_SpawnPad";
-        
 
         private GameObject gameObject;
         public UIElements Hud => new(gameObject.GetComponent<UIDocument>().rootVisualElement);
