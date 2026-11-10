@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Linq;
 using AutomationTests.TestFramework.Shared;
+using AutomationTests.TestFramework.Support;
 using Blocks.Gameplay.Shooter;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using UnityEngine.UIElements;
-using TestData = AutomationTests.TestFramework.Support.TestData;
 
 namespace AutomationTests.TestFramework
 {
@@ -17,20 +16,18 @@ namespace AutomationTests.TestFramework
         public IEnumerator PlayerSpawn_DefaultCoreHUDChecks()
         {
             // Player
-            GameObject playerObject = null;
-            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            var basicUI = new BasicUI();
+            yield return basicUI.WaitPlayerSpawned();
+            var playerObject = GameObject.Find(BasicUI.PlayerObjectName);
             Assert.That(playerObject.GetComponent<CharacterController>().enabled, Is.True);
 
-            SkinnedMeshRenderer playerMeshRenderer = null;
-            yield return new WaitUntil(() =>
-                playerMeshRenderer = playerObject.GetComponentInChildren<SkinnedMeshRenderer>(true));
-            
-            Assert.That(playerMeshRenderer.sharedMesh.name, Is.EqualTo(TestData.PlayerMeshName));
+            yield return basicUI.WaitPlayerMesh();
+            var playerMeshRenderer = playerObject.GetComponentInChildren<SkinnedMeshRenderer>(true);
+            Assert.That(playerMeshRenderer.sharedMesh.name, Is.EqualTo(BasicUI.PlayerMeshName));
             
             // Check bars are full
-            var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
-            var healthBar = uiComponent.Q<ProgressBar>(TestData.UIElements.HealthBar);
-            var staminaBar = uiComponent.Q<ProgressBar>(TestData.UIElements.StaminaBar);
+            var healthBar = basicUI.Hud.HealthBar;
+            var staminaBar = basicUI.Hud.StaminaBar;
             
             Assert.That(healthBar.value, Is.EqualTo(healthBar.highValue));
             Assert.That(staminaBar.value, Is.EqualTo(staminaBar.highValue));
@@ -40,8 +37,9 @@ namespace AutomationTests.TestFramework
         public IEnumerator PlayerSpawn_DefaultWeaponHUDChecks()
         {
             // Player
-            GameObject playerObject = null;
-            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            var basicUI = new BasicUI();
+            yield return basicUI.WaitPlayerSpawned();
+            var playerObject = GameObject.Find(BasicUI.PlayerObjectName);
 
             // Weapon
             var weaponController = playerObject.GetComponent<WeaponController>();
@@ -49,10 +47,9 @@ namespace AutomationTests.TestFramework
             weaponController.CurrentWeapon.GetAmmoInfo(out _, out var maxBullets);
 
             // Check 
-            var uiComponent = playerObject.GetComponent<UIDocument>().rootVisualElement;
-            var weaponName = uiComponent.Q<Label>(TestData.UIElements.Name);
-            var weaponIcon = uiComponent.Q<Image>(TestData.UIElements.Icon);
-            var ammoBar = uiComponent.Q<ProgressBar>(TestData.UIElements.AmmoBar);
+            var weaponName = basicUI.Hud.WeaponName;
+            var weaponIcon = basicUI.Hud.WeaponIcon;
+            var ammoBar = basicUI.Hud.AmmoBar;
             
             Assert.That(weaponName.text, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponName));
             Assert.That(weaponIcon.sprite, Is.EqualTo(weaponController.CurrentWeapon.GetWeaponData().weaponIcon));
@@ -64,12 +61,12 @@ namespace AutomationTests.TestFramework
         public IEnumerator PlayerSpawn_SpawnPointChecks()
         {
             // Player
-            GameObject playerObject = null;
-            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            var basicUI = new BasicUI();
+            yield return basicUI.WaitPlayerSpawned();
+            var playerObject = GameObject.Find(BasicUI.PlayerObjectName);
             
             var userPosition = playerObject.transform.position;
-            var spawnObjectArray = GameObject.FindObjectsByType<Transform>().Where(t => t.name == "Pfb_SpawnPad")
-                .ToArray();
+            var spawnObjectArray = basicUI.GetSpawnPoints();
 
             Assert.That(spawnObjectArray, Is.Not.Null, "No spawn pad transforms were found");
             Assert.That(spawnObjectArray.Any(x => Vector3.Distance(x.position, userPosition) < 1f), Is.True);

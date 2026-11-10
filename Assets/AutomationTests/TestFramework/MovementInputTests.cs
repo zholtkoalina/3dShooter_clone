@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Linq;
 using AutomationTests.TestFramework.Shared;
+using AutomationTests.TestFramework.Support;
 using Blocks.Gameplay.Core;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TestTools;
-using TestData = AutomationTests.TestFramework.Support.TestData;
 
 namespace AutomationTests.TestFramework
 {
@@ -20,9 +20,10 @@ namespace AutomationTests.TestFramework
             const float deltaTime = 0.3f;
             const float deltaDistance = 0.5f;
             
-            GameObject playerObject = null;
-            yield return GameObjectExtensions.WaitForGameObject(TestData.PlayerObjectName, result => playerObject = result);
+            var basicUI = new BasicUI();
+            yield return basicUI.WaitPlayerSpawned();
 
+            var playerObject = GameObject.Find(BasicUI.PlayerObjectName);
             var movement = playerObject.GetComponent<CoreMovement>();
             var onMoveInputEvent = Resources.FindObjectsOfTypeAll<Vector2Event>().FirstOrDefault(gameEvent => gameEvent.name == "OnMoveInput");
             var startPosition = playerObject.transform.position;
