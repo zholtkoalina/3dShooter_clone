@@ -43,7 +43,7 @@ namespace AutomationTests.TestFramework
 
             // Weapon
             var weaponController = playerObject.GetComponent<WeaponController>();
-            yield return new WaitUntil(() => weaponController.CurrentWeapon != null);
+            yield return TestExtensions.WaitUntil(() => weaponController.CurrentWeapon != null);
             weaponController.CurrentWeapon.GetAmmoInfo(out _, out var maxBullets);
 
             // Check 

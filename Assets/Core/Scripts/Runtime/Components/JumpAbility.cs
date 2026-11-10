@@ -24,6 +24,9 @@ namespace Blocks.Gameplay.Core
         /// </summary>
         public float StaminaCost => 10f;
 
+        /// <summary>Gets the delay after landing before another jump can be performed.</summary>
+        public float LandingCooldown => landingCooldown;
+
         [Header("Jump Settings")]
         [Tooltip("Time in seconds after landing before the player can jump again.")]
         [SerializeField] private float landingCooldown = 0.5f;

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +10,27 @@ namespace AutomationTests.TestFramework.Shared
 {
     public static class TestExtensions
     {
+        /// <summary>Waits until a condition is true, or throws when the timeout expires</summary>
+        public static IEnumerator WaitUntil(System.Func<bool> predicate, float timeoutSeconds = 5,
+            [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = 0,
+            [CallerMemberName] string callerMemberName = "")
+        {
+            if (predicate == null)
+                throw new System.ArgumentNullException(nameof(predicate));
+
+            var elapsed = 0f;
+            while (!predicate())
+            {
+                if (elapsed >= timeoutSeconds)
+                    throw new System.TimeoutException(
+                        $"Condition was not met within {timeoutSeconds} seconds in {callerMemberName} " +
+                        $"at {System.IO.Path.GetFileName(callerFilePath)}:{callerLineNumber}.");
+
+                yield return null;
+                elapsed += Time.unscaledDeltaTime;
+            }
+        }
+
         /// <summary>Clicks the UI Toolkit button</summary>
         public static IEnumerator ClickButton(this Button button)
         {
