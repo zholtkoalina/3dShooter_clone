@@ -1,0 +1,7 @@
+<linker>
+    <!--
+        Empty on purpose. The AltTester assemblies, NLog and the other code AltTester needs are preserved only in
+        instrumented builds, through the link.xml AltLinker (Editor/Scripts/AltTesterEditor/AltLinker.cs) generates
+        at build time. The file is kept so that importing a new package version replaces an older link.xml.
+    -->
+</linker>

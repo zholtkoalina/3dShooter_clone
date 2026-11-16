@@ -1,0 +1,503 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8775a984e9d6279448cd0893c1c48334, type: 3}
+  m_Name: AltTesterEditorSettings
+  m_EditorClassIdentifier: AltTester.AltTesterUnitySDK.Editor::AltTester.AltTesterUnitySDK.Editor.AltEditorConfiguration
+  appendToName: 0
+  AdbPath: /usr/local/bin/adb
+  IProxyPath: /usr/local/bin/iproxy
+  XcrunPath: /usr/bin/xcrun
+  MyTests:
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/AltTester.AltTesterUnitySDK.Editor.dll
+    _testAssembly: AltTester.AltTesterUnitySDK.Editor
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _testAssembly: Assembly-CSharp-Editor
+    _status: -1
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 1
+  - _selected: 1
+    _testName: AutomationTests
+    _testAssembly: Assembly-CSharp-Editor
+    _status: -1
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestSuite
+    _parentName: C:/work/3dShooter/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 1
+  - _selected: 1
+    _testName: AutomationTests.AltTesterFramework
+    _testAssembly: Assembly-CSharp-Editor
+    _status: -1
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestSuite
+    _parentName: AutomationTests
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 1
+  - _selected: 1
+    _testName: AutomationTests.AltTesterFramework.Editor
+    _testAssembly: Assembly-CSharp-Editor
+    _status: -1
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestSuite
+    _parentName: AutomationTests.AltTesterFramework
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 1
+  - _selected: 1
+    _testName: AutomationTests.AltTesterFramework.Editor.NewAltTest
+    _testAssembly: Assembly-CSharp-Editor
+    _status: -1
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestFixture
+    _parentName: AutomationTests.AltTesterFramework.Editor
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 1
+  - _selected: 1
+    _testName: AutomationTests.AltTesterFramework.Editor.NewAltTest.Test
+    _testAssembly: Assembly-CSharp-Editor
+    _status: -1
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: AutomationTests.AltTesterFramework.Editor.NewAltTest
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 'AltTester.AltTesterSDK.Driver.ComponentNotFoundException : Component not found'
+    _testStackTrace: "  at AltTester.AltTesterSDK.Driver.Communication.DriverCommunicationHandler.handleErrors (AltTester.AltTesterSDK.Driver.Commands.CommandError error) [0x00354] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Communication\\DriverCommunicationHandler.cs:303 \r\n  at AltTester.AltTesterSDK.Driver.Communication.DriverCommunicationHandler.Recvall[T] (AltTester.AltTesterSDK.Driver.Commands.CommandParams param) [0x00244] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Communication\\DriverCommunicationHandler.cs:171 \r\n  at AltTester.AltTesterSDK.Driver.Commands.AltCallComponentMethod`1[T].Execute () [0x00013] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Commands\\ObjectCommands\\AltCallComponentMethod.cs:21 \r\n  at AltTester.AltTesterSDK.Driver.AltObject.CallComponentMethod[T] (System.String componentName, System.String methodName, System.String assemblyName, System.Object[] parameters, System.String[] typeOfParameters) [0x00001] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Common\\AltObject.cs:132 \r\n  at AutomationTests.AltTesterFramework.Editor.NewAltTest.Test () [0x0003e] in C:\\work\\3dShooter\\Assets\\AutomationTests\\AltTesterFramework\\Editor\\NewAltTest.cs:37 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+    _testDuration: 4.0491271
+    path: Assets/AutomationTests/AltTesterFramework/Editor/NewAltTest.cs
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/UnityEngine.TestRunner.dll
+    _testAssembly: UnityEngine.TestRunner
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/AutomationTests.dll
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 5
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: AutomationTests
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestSuite
+    _parentName: C:/work/3dShooter/Library/ScriptAssemblies/AutomationTests.dll
+    _testCaseCount: 5
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 5
+  - _selected: 0
+    _testName: AutomationTests.TestFramework
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestSuite
+    _parentName: AutomationTests
+    _testCaseCount: 5
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 5
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.MovementInputTests
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestFixture
+    _parentName: AutomationTests.TestFramework
+    _testCaseCount: 2
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 2
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.MovementInputTests.MovementInput_JumpChecks
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: AutomationTests.TestFramework.MovementInputTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Assets/AutomationTests/TestFramework/MovementInputTests.cs
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.MovementInputTests.MovementInput_WalkForwardChecks
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: AutomationTests.TestFramework.MovementInputTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Assets/AutomationTests/TestFramework/MovementInputTests.cs
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.SpawnTests
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestFixture
+    _parentName: AutomationTests.TestFramework
+    _testCaseCount: 3
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 3
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.SpawnTests.PlayerSpawn_DefaultCoreHUDChecks
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: AutomationTests.TestFramework.SpawnTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Assets/AutomationTests/TestFramework/SpawnTests.cs
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.SpawnTests.PlayerSpawn_DefaultWeaponHUDChecks
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: AutomationTests.TestFramework.SpawnTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Assets/AutomationTests/TestFramework/SpawnTests.cs
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: AutomationTests.TestFramework.SpawnTests.PlayerSpawn_SpawnPointChecks
+    _testAssembly: AutomationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: AutomationTests.TestFramework.SpawnTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Assets/AutomationTests/TestFramework/SpawnTests.cs
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll
+    _testAssembly: Unity.RenderPipelines.Core.Editor
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.InputSystem.TestFramework.dll
+    _testAssembly: Unity.InputSystem.TestFramework
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll
+    _testAssembly: Unity.InputSystem.IntegrationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 4
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: IntegrationTests
+    _testAssembly: Unity.InputSystem.IntegrationTests
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestFixture
+    _parentName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll
+    _testCaseCount: 4
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 4
+  - _selected: 0
+    _testName: IntegrationTests.Integration_CanChangeInputBackendPlayerSettingInEditor
+    _testAssembly: Unity.InputSystem.IntegrationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: IntegrationTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Packages/com.unity.inputsystem/Tests/IntegrationTests
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: IntegrationTests.Integration_CanSendAndReceiveEvents
+    _testAssembly: Unity.InputSystem.IntegrationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: IntegrationTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Packages/com.unity.inputsystem/Tests/IntegrationTests
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: IntegrationTests.WindowsInput_MouseMovements_AreDetected
+    _testAssembly: Unity.InputSystem.IntegrationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: IntegrationTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Packages/com.unity.inputsystem/Tests/IntegrationTests
+    _testSelectedCount: 0
+  - _selected: 0
+    _testName: IntegrationTests.WindowsInput_RemoteDesktopMouseMovements_AreDetected
+    _testAssembly: Unity.InputSystem.IntegrationTests
+    _status: 0
+    _isSuite: 0
+    _type: NUnit.Framework.Internal.TestMethod
+    _parentName: IntegrationTests
+    _testCaseCount: 1
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: Packages/com.unity.inputsystem/Tests/IntegrationTests
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.PerformanceTesting.dll
+    _testAssembly: Unity.PerformanceTesting
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/UnityEditor.TestRunner.dll
+    _testAssembly: UnityEditor.TestRunner
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.Pipeline.Editor.dll
+    _testAssembly: Unity.Pipeline.Editor
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.Rider.Editor.dll
+    _testAssembly: Unity.Rider.Editor
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
+    _testAssembly: Unity.VisualStudio.Editor
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  - _selected: 1
+    _testName: C:/work/data-000001D233000020
+    _testAssembly: JetBrains.Rider.Unity.Editor.Plugin.2022.3.Net46.Repacked
+    _status: 0
+    _isSuite: 1
+    _type: NUnit.Framework.Internal.TestAssembly
+    _parentName: 
+    _testCaseCount: 0
+    _foldOut: 0
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+    _testSelectedCount: 0
+  Scenes:
+  - _toBeBuilt: 1
+    _path: Assets/Core/TestScenes/[BB] Core.unity
+    _buildIndex: 0
+  - _toBeBuilt: 1
+    _path: Assets/Core/TestScenes/[BB] Core MultiplayerSession.unity
+    _buildIndex: 0
+  - _toBeBuilt: 1
+    _path: Assets/Platformer/TestScenes/[BB] Platformer.unity
+    _buildIndex: 0
+  - _toBeBuilt: 1
+    _path: Assets/Platformer/TestScenes/[BB] Platformer MultiplayerSession.unity
+    _buildIndex: 0
+  - _toBeBuilt: 1
+    _path: Assets/Shooter/TestScenes/[BB] Shooter.unity
+    _buildIndex: 0
+  - _toBeBuilt: 1
+    _path: Assets/Shooter/TestScenes/[BB] Shooter MultiplayerSession.unity
+    _buildIndex: 0
+  platform: 2
+  StandaloneTarget: 5
+  RanInEditor: 0
+  ScenePathDisplayed: 0
+  BuildLocationPath: 
+  createXMLReport: 0
+  xMLFilePath: 
+  AltServerPort: 13000
+  AltServerHost: 127.0.0.1
+  AppName: __default__
+  assemblyTestDisplayedIndex: 0
+  ResetConnectionData: 0
+  UID: 
+  UsingLocation: 0
+  HideGreenPopup: 0
+  KeepAUTSymbolDefined: 1
+  KeepAltTesterPrefabInScene: 0

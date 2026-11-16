@@ -12,8 +12,8 @@ namespace AutomationTests.TestFramework.Shared
         public IEnumerator SetUp()
         {
             const string testSceneName = "[BB] Shooter";
-            const string hostButtonName = "host-button";
             const string netManagerPanelName = "NetworkManager";
+            const string hostButtonName = "host-button";
         
             // Scene
             SceneManager.LoadScene(testSceneName);
