@@ -32,90 +32,6 @@ MonoBehaviour:
     path: 
     _testSelectedCount: 0
   - _selected: 1
-    _testName: C:/work/3dShooter/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
-    _testAssembly: Assembly-CSharp-Editor
-    _status: -1
-    _isSuite: 1
-    _type: NUnit.Framework.Internal.TestAssembly
-    _parentName: 
-    _testCaseCount: 1
-    _foldOut: 1
-    _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
-    path: 
-    _testSelectedCount: 1
-  - _selected: 1
-    _testName: AutomationTests
-    _testAssembly: Assembly-CSharp-Editor
-    _status: -1
-    _isSuite: 1
-    _type: NUnit.Framework.Internal.TestSuite
-    _parentName: C:/work/3dShooter/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
-    _testCaseCount: 1
-    _foldOut: 1
-    _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
-    path: 
-    _testSelectedCount: 1
-  - _selected: 1
-    _testName: AutomationTests.AltTesterFramework
-    _testAssembly: Assembly-CSharp-Editor
-    _status: -1
-    _isSuite: 1
-    _type: NUnit.Framework.Internal.TestSuite
-    _parentName: AutomationTests
-    _testCaseCount: 1
-    _foldOut: 1
-    _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
-    path: 
-    _testSelectedCount: 1
-  - _selected: 1
-    _testName: AutomationTests.AltTesterFramework.Editor
-    _testAssembly: Assembly-CSharp-Editor
-    _status: -1
-    _isSuite: 1
-    _type: NUnit.Framework.Internal.TestSuite
-    _parentName: AutomationTests.AltTesterFramework
-    _testCaseCount: 1
-    _foldOut: 1
-    _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
-    path: 
-    _testSelectedCount: 1
-  - _selected: 1
-    _testName: AutomationTests.AltTesterFramework.Editor.NewAltTest
-    _testAssembly: Assembly-CSharp-Editor
-    _status: -1
-    _isSuite: 1
-    _type: NUnit.Framework.Internal.TestFixture
-    _parentName: AutomationTests.AltTesterFramework.Editor
-    _testCaseCount: 1
-    _foldOut: 1
-    _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
-    path: 
-    _testSelectedCount: 1
-  - _selected: 1
-    _testName: AutomationTests.AltTesterFramework.Editor.NewAltTest.Test
-    _testAssembly: Assembly-CSharp-Editor
-    _status: -1
-    _isSuite: 0
-    _type: NUnit.Framework.Internal.TestMethod
-    _parentName: AutomationTests.AltTesterFramework.Editor.NewAltTest
-    _testCaseCount: 1
-    _foldOut: 1
-    _testResultMessage: 'AltTester.AltTesterSDK.Driver.ComponentNotFoundException : Component not found'
-    _testStackTrace: "  at AltTester.AltTesterSDK.Driver.Communication.DriverCommunicationHandler.handleErrors (AltTester.AltTesterSDK.Driver.Commands.CommandError error) [0x00354] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Communication\\DriverCommunicationHandler.cs:303 \r\n  at AltTester.AltTesterSDK.Driver.Communication.DriverCommunicationHandler.Recvall[T] (AltTester.AltTesterSDK.Driver.Commands.CommandParams param) [0x00244] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Communication\\DriverCommunicationHandler.cs:171 \r\n  at AltTester.AltTesterSDK.Driver.Commands.AltCallComponentMethod`1[T].Execute () [0x00013] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Commands\\ObjectCommands\\AltCallComponentMethod.cs:21 \r\n  at AltTester.AltTesterSDK.Driver.AltObject.CallComponentMethod[T] (System.String componentName, System.String methodName, System.String assemblyName, System.Object[] parameters, System.String[] typeOfParameters) [0x00001] in C:\\work\\3dShooter\\Assets\\AltTester\\Runtime\\AltDriver\\Common\\AltObject.cs:132 \r\n  at AutomationTests.AltTesterFramework.Editor.NewAltTest.Test () [0x0003e] in C:\\work\\3dShooter\\Assets\\AutomationTests\\AltTesterFramework\\Editor\\NewAltTest.cs:37 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
-    _testDuration: 4.0491271
-    path: Assets/AutomationTests/AltTesterFramework/Editor/NewAltTest.cs
-    _testSelectedCount: 0
-  - _selected: 1
     _testName: C:/work/3dShooter/Library/ScriptAssemblies/UnityEngine.TestRunner.dll
     _testAssembly: UnityEngine.TestRunner
     _status: 0
@@ -156,7 +72,7 @@ MonoBehaviour:
     _testStackTrace: 
     _testDuration: 0
     path: 
-    _testSelectedCount: 5
+    _testSelectedCount: 0
   - _selected: 0
     _testName: AutomationTests.TestFramework
     _testAssembly: AutomationTests
@@ -170,7 +86,7 @@ MonoBehaviour:
     _testStackTrace: 
     _testDuration: 0
     path: 
-    _testSelectedCount: 5
+    _testSelectedCount: 0
   - _selected: 0
     _testName: AutomationTests.TestFramework.MovementInputTests
     _testAssembly: AutomationTests
@@ -184,7 +100,7 @@ MonoBehaviour:
     _testStackTrace: 
     _testDuration: 0
     path: 
-    _testSelectedCount: 2
+    _testSelectedCount: 0
   - _selected: 0
     _testName: AutomationTests.TestFramework.MovementInputTests.MovementInput_JumpChecks
     _testAssembly: AutomationTests
@@ -226,7 +142,7 @@ MonoBehaviour:
     _testStackTrace: 
     _testDuration: 0
     path: 
-    _testSelectedCount: 3
+    _testSelectedCount: 0
   - _selected: 0
     _testName: AutomationTests.TestFramework.SpawnTests.PlayerSpawn_DefaultCoreHUDChecks
     _testAssembly: AutomationTests
@@ -319,12 +235,12 @@ MonoBehaviour:
     _type: NUnit.Framework.Internal.TestFixture
     _parentName: C:/work/3dShooter/Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll
     _testCaseCount: 4
-    _foldOut: 0
+    _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
     path: 
-    _testSelectedCount: 4
+    _testSelectedCount: 0
   - _selected: 0
     _testName: IntegrationTests.Integration_CanChangeInputBackendPlayerSettingInEditor
     _testAssembly: Unity.InputSystem.IntegrationTests
@@ -333,7 +249,7 @@ MonoBehaviour:
     _type: NUnit.Framework.Internal.TestMethod
     _parentName: IntegrationTests
     _testCaseCount: 1
-    _foldOut: 0
+    _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
@@ -347,7 +263,7 @@ MonoBehaviour:
     _type: NUnit.Framework.Internal.TestMethod
     _parentName: IntegrationTests
     _testCaseCount: 1
-    _foldOut: 0
+    _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
@@ -361,7 +277,7 @@ MonoBehaviour:
     _type: NUnit.Framework.Internal.TestMethod
     _parentName: IntegrationTests
     _testCaseCount: 1
-    _foldOut: 0
+    _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
@@ -375,7 +291,7 @@ MonoBehaviour:
     _type: NUnit.Framework.Internal.TestMethod
     _parentName: IntegrationTests
     _testCaseCount: 1
-    _foldOut: 0
+    _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
@@ -452,7 +368,7 @@ MonoBehaviour:
     path: 
     _testSelectedCount: 0
   - _selected: 1
-    _testName: C:/work/data-000001D233000020
+    _testName: C:/work/data-00000178B5BA0020
     _testAssembly: JetBrains.Rider.Unity.Editor.Plugin.2022.3.Net46.Repacked
     _status: 0
     _isSuite: 1
@@ -471,22 +387,22 @@ MonoBehaviour:
     _buildIndex: 0
   - _toBeBuilt: 1
     _path: Assets/Core/TestScenes/[BB] Core MultiplayerSession.unity
-    _buildIndex: 0
+    _buildIndex: 1
   - _toBeBuilt: 1
     _path: Assets/Platformer/TestScenes/[BB] Platformer.unity
-    _buildIndex: 0
+    _buildIndex: 2
   - _toBeBuilt: 1
     _path: Assets/Platformer/TestScenes/[BB] Platformer MultiplayerSession.unity
-    _buildIndex: 0
+    _buildIndex: 3
   - _toBeBuilt: 1
     _path: Assets/Shooter/TestScenes/[BB] Shooter.unity
-    _buildIndex: 0
+    _buildIndex: 4
   - _toBeBuilt: 1
     _path: Assets/Shooter/TestScenes/[BB] Shooter MultiplayerSession.unity
-    _buildIndex: 0
+    _buildIndex: 5
   platform: 2
   StandaloneTarget: 5
-  RanInEditor: 0
+  RanInEditor: 1
   ScenePathDisplayed: 0
   BuildLocationPath: 
   createXMLReport: 0

@@ -1,6 +1,6 @@
 using System.Collections;
 using AutomationTests.TestFramework.Shared;
-using AutomationTests.TestFramework.Support;
+using AutomationTests.TestFramework.UI;
 using Blocks.Gameplay.Core;
 using NUnit.Framework;
 using UnityEngine;
@@ -10,7 +10,7 @@ using UnityEngine.TestTools;
 namespace AutomationTests.TestFramework
 {
     [TestFixture]
-    public class MovementInputTests : BaseUITests
+    public class MovementInputTests : BaseUITest
     {
         const float deltaDistance = 0.5f;
         

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Linq;
 using AutomationTests.TestFramework.Shared;
-using AutomationTests.TestFramework.Support;
+using AutomationTests.TestFramework.UI;
 using Blocks.Gameplay.Shooter;
 using NUnit.Framework;
 using UnityEngine;
@@ -10,7 +10,7 @@ using UnityEngine.TestTools;
 namespace AutomationTests.TestFramework
 {
     [TestFixture]
-    public class SpawnTests : BaseUITests
+    public class SpawnTests : BaseUITest
     {
         [UnityTest]
         public IEnumerator PlayerSpawn_DefaultCoreHUDChecks()

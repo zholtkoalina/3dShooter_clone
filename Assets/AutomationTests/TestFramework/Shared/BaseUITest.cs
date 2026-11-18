@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace AutomationTests.TestFramework.Shared
 {
-    public class BaseUITests
+    public class BaseUITest
     {
         [UnityOneTimeSetUp]
         public IEnumerator SetUp()

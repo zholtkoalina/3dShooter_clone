@@ -140,6 +140,20 @@ namespace Blocks.Gameplay.Core
         }
 
         /// <summary>
+        /// Submits the host button through its UI Toolkit event path
+        /// </summary>
+        public void SubmitHostButton()
+        {
+            if (m_HostButton == null)
+            {
+                throw new System.InvalidOperationException("The host button is not available.");
+            }
+
+            m_HostButton.Focus();
+            m_HostButton.SendEvent(NavigationSubmitEvent.GetPooled());
+        }
+
+        /// <summary>
         /// Updates button states and text based on the current network connection state.
         /// </summary>
         private void UpdateUI()
