@@ -1,11 +1,11 @@
-/[L|l]ibrary/
-/[T|t]emp/
-/[O|o]bj/
-/[B|b]uild/
-/[B|b]uilds/
-/[L|l]ogs/
-/[U|u]ser[S|s]ettings/
-/[B|b]in/
+[L|l]ibrary/
+[T|t]emp/
+[O|o]bj/
+[B|b]uild/
+[B|b]uilds/
+[L|l]ogs/
+[U|u]ser[S|s]ettings/
+[B|b]in/
 .idea/
 
 *.sln
