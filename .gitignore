@@ -5,6 +5,7 @@
 /[B|b]uilds/
 /[L|l]ogs/
 /[U|u]ser[S|s]ettings/
+/[B|b]in/
 .idea/
 
 *.sln
