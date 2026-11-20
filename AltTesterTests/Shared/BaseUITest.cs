@@ -1,9 +1,10 @@
 using AltTester.AltTesterSDK.Driver;
-using System.Linq;
+using Blocks.Gameplay.Core;
+using Unity.Netcode;
 
 namespace AltTesterTests.Shared
 {
-    public class BaseUITest
+    public class BaseUITest : TestExtensions
     {
         protected AltDriver Unity;
         
@@ -21,8 +22,9 @@ namespace AltTesterTests.Shared
             
             // Start battle as host
             var networkManager = Unity.WaitForObject(By.NAME, NetworkManagerName);
-            networkManager.CallComponentMethod<object>("Blocks.Gameplay.Core.GameNetworkUI", "SubmitHostButton",
-                "Blocks.Gameplay.Core", System.Array.Empty<object>());
+            var gameNetworkUI = typeof(GameNetworkUI);
+            networkManager.CallComponentMethod<object>(gameNetworkUI.FullName, nameof(GameNetworkUI.SubmitHostButton),
+                gameNetworkUI.Assembly.GetName().Name, System.Array.Empty<object>());
         }
 
         [TearDown]
@@ -39,8 +41,9 @@ namespace AltTesterTests.Shared
         {
             // Stop the host at the end of the run so the next run can start a new one
             var existing = Unity.FindObject(By.NAME, NetworkManagerName);
-            existing.CallComponentMethod<object>("Unity.Netcode.NetworkManager", "Shutdown", "Unity.Netcode.Runtime",
-                new object[] { false }, new[] { "System.Boolean" });
+            var networkManager = typeof(NetworkManager);
+            existing.CallComponentMethod<object>(networkManager.FullName, nameof(NetworkManager.Shutdown),
+                networkManager.Assembly.GetName().Name, [false], [typeof(bool).FullName]);
 
             Unity.Stop();
         }

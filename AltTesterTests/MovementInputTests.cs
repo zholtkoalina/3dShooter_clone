@@ -1,24 +1,36 @@
 using AltTester.AltTesterSDK.Driver;
 using AltTesterTests.Shared;
 using AwesomeAssertions;
+using Blocks.Gameplay.Core;
+using UnityEngine;
+using GameObject = AltTesterTests.Shared.GameObject;
 
 namespace AltTesterTests
 {
     [TestFixture]
     public class MovementInputTests : BaseUITest
     {
+        const float deltaDistance = 0.5f;
+        
         [Test]
         public void MovementInput_WalkForwardChecks()
         {
-            var skinnedMeshRenderer = Unity.WaitFor<PlayerObject>().SkinnedMeshRenderer;
-            skinnedMeshRenderer.Exists().Should().BeTrue();
+            const float walkDurationSeconds = 1f;
             
-            var spawnPadList = Unity.WaitFor<MainScene>().SpawnPadList;
-            spawnPadList.Count.Should().BeGreaterThan(0);
-            
-            Unity.PressKey(AltKeyCode.W);
-            Unity.SetDelayAfterCommand(1);
-           
+            // Parameters
+            var player = Unity.WaitFor<PlayerObject>();
+            var coreMovement = typeof(CoreMovement);
+            var moveSpeed = player.Find().GetComponentProperty<float>(coreMovement.FullName,
+                nameof(CoreMovement.moveSpeed), coreMovement.Assembly.GetName().Name);
+
+            // Walk forward
+            var startPosition = player.Position;
+            Unity.PressKey(AltKeyCode.W, duration: walkDurationSeconds);
+            var stopPosition = player.Position;
+
+            // Measure distance
+            var distance = GameObject.Distance(startPosition, stopPosition);
+            distance.Should().BeApproximately(walkDurationSeconds * moveSpeed, deltaDistance);
         }
 
         [Test]
@@ -26,8 +38,22 @@ namespace AltTesterTests
         {
             var player = Unity.WaitFor<PlayerObject>();
 
+            // Cooldown before first Jump can be made
+            WaitUntil(() =>
+                player.GetComponentProperty<CoreMovement, float>(nameof(CoreMovement.TimeSinceLanded)) >=
+                player.GetComponentProperty<JumpAbility, float>(nameof(JumpAbility.LandingCooldown)));
+            
+            player.GetComponentProperty<CoreMovement, bool>(nameof(CoreMovement.IsGrounded)).Should().BeTrue("Player should be grounded before jumping");
+            var groundY = player.Position.y;
+
+            // Press jump button
             Unity.PressKey(AltKeyCode.Space);
-            Unity.SetDelayAfterCommand(1);
+            WaitUntil(() => !player.GetComponentProperty<CoreMovement, bool>(nameof(CoreMovement.IsGrounded)));
+            player.Position.y.Should().BeGreaterThan(groundY, "Player should be above the ground during Jump");
+
+            // Wait for landing
+            WaitUntil(() => player.GetComponentProperty<CoreMovement, bool>(nameof(CoreMovement.IsGrounded)));
+            player.Position.y.Should().BeApproximately(groundY, deltaDistance, "Player should be grounded after Jump");
         }
     }
 }

@@ -24,6 +24,18 @@ namespace AltTesterTests.Shared
             return (T)Create(type, driver, parentPath + (type.GetCustomAttribute<XPathAttribute>()?.Path ?? ""));
         }
 
+        /// <summary>Current world position. Queried from the game on every read, so it is never stale.</summary>
+        public AltVector3 Position => this.Find().GetWorldPosition();
+
+        /// <summary>Horizontal (XZ-plane) distance between two world positions; height is ignored.</summary>
+        public static double Distance(AltVector3 from, AltVector3 to) =>
+            Math.Sqrt(Math.Pow(to.x - from.x, 2) + Math.Pow(to.z - from.z, 2));
+
+        /// <summary>Reads a property or field of a component on this object. Read from the game on every call.</summary>
+        public T GetComponentProperty<TComponent, T>(string propertyName) =>
+            this.Find().GetComponentProperty<T>(typeof(TComponent).FullName, propertyName,
+                typeof(TComponent).Assembly.GetName().Name);
+
         internal AltDriver Driver => _driver;
 
         internal AltObject? Resolved => _resolved;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AutomationTests.TestFramework.UI
 {
-    internal static class Components
+    internal static class UIComponents
     {
         public const string OnMoveEventName = "OnMoveInput";
         public const string OnJumpPressEventName = "OnJumpPressed";
