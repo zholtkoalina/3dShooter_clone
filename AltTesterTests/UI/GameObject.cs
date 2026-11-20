@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Reflection;
 using AltTester.AltTesterSDK.Driver;
+using AltTesterTests.Shared;
 
-namespace AltTesterTests.Shared
+namespace AltTesterTests.UI
 {
     /// <summary>
     /// Base class for game object descriptions. Create it with <see cref="Create{T}"/>; every field or property of

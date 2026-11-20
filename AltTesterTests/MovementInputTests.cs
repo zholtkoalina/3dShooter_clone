@@ -1,9 +1,9 @@
 using AltTester.AltTesterSDK.Driver;
 using AltTesterTests.Shared;
+using AltTesterTests.UI;
 using AwesomeAssertions;
 using Blocks.Gameplay.Core;
-using UnityEngine;
-using GameObject = AltTesterTests.Shared.GameObject;
+using GameObject = AltTesterTests.UI.GameObject;
 
 namespace AltTesterTests
 {
